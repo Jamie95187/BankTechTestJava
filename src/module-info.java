@@ -1,0 +1,3 @@
+module bankTechTest {
+	requires junit;
+}

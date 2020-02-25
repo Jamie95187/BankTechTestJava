@@ -1,1 +1,1 @@
-# BankTechTestJava
+# Bank Tech Test Java

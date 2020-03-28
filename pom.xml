@@ -4,7 +4,13 @@
   <artifactId>BankTechTest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>BankTechTest</name>
-  <build>
+  
+   <properties>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <!-- <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
@@ -15,13 +21,18 @@
         </configuration>
       </plugin>
     </plugins>
-  </build>
+  </build> -->
   <dependencies>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId> 
+        <version>4.13</version>
+        <scope>test</scope>
+    </dependency>
 	<dependency>
 	      <groupId>org.mockito</groupId>
 	      <artifactId>mockito-core</artifactId>
-	      <version>3.2.4</version>
-		  <scope>testing</scope>
+		  <version>3.3.3</version>
 	</dependency>
   </dependencies>
 </project>

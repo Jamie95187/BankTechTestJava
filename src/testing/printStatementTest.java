@@ -18,11 +18,11 @@ public class PrintStatementTest {
 	private final PrintStream originalOut = System.out;
 	TransactionHistory mockTransactionHistory = new TransactionHistory();
 	
-	//  Following the 'AAA' pattern Arrange, Action, Assert
+	  //Following the 'AAA' pattern Arrange, Action, Assert
 	
 	@Before
 	public void setUpStreams() {
-		// Arranging 
+		//Arranging 
 		System.setOut(new PrintStream(outContent));
 		test = new Statement();
 	}
@@ -34,9 +34,9 @@ public class PrintStatementTest {
 	
 	@Test
 	public void printStatement_blankStatement_defaultStatement() {
-		// Action
+		 //Action
 		test.printStatement(mockTransactionHistory);
-		// Assert
+		 //Assert
 		assertEquals("Date || Credit || Debit || Balance", outContent.toString());
 	}
 	

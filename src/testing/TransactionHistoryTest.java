@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class TransactionHistoryTest {
 	
-//	private static TransactionHistory test;
+	private static TransactionHistory test;
 	
 	@Test
 	public void addTransaction_addOneTransaction_correctLog() {
@@ -21,7 +21,7 @@ public class TransactionHistoryTest {
 			put("Amount", "1000");
 			put("Balance", "1000");
 		}};
-		// Make shallow copy of HashMap
+		 //Make shallow copy of HashMap
 		HashMap<String, String> transactionCopy = new HashMap<String,String>(transaction);
 		assertEquals(test.addTransaction(transactionCopy), test.getLog());
 	};

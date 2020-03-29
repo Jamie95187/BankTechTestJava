@@ -20,10 +20,6 @@ public class Statement {
 			};
 		};
 		
-//		for(int i = 0; i < log.size(); i++) {
-//			System.out.println(log.get(i).get("Action"));
-//		}
-		
 		System.out.print(script);
 	}
 	

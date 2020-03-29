@@ -23,8 +23,6 @@ public class AccountTest {
 	
 	private Account test;
 	private ArrayList<HashMap<String, String>> mockedLog;
-//	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-//	private final PrintStream originalOut = System.out;
 	
 	@Mock
 	private TransactionHistory mockedTransactionHistory = mock(TransactionHistory.class);

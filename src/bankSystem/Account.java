@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Account {
 	TransactionHistory transactionHistoryFieldVariable;
 	
-	Account(TransactionHistory transactionHistory) {
+	public Account(TransactionHistory transactionHistory) {
 		transactionHistoryFieldVariable = transactionHistory;
 	}
 	

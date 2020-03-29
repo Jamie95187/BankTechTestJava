@@ -20,7 +20,17 @@ public class Account {
 		return transactionHistoryFieldVariable.getLog();
 	};
 	
-	// Overloading the deposit method used for testing transactionHistory
+	public ArrayList<HashMap<String, String>> withdraw(int amount) {
+		HashMap<String, String> transaction = new HashMap<String, String>(){{
+			put("Action", "Withdraw");
+			put("Date", "01/02/20");
+			put("Amount", Integer.toString(amount));
+		}};
+		transactionHistoryFieldVariable.addTransaction(transaction);
+		return transactionHistoryFieldVariable.getLog();
+	};
+	
+	// Overloading the deposit method to use testing
 	public ArrayList<HashMap<String, String>> deposit(int amount, String date) {
 		HashMap<String, String> transaction = new HashMap<String, String>(){{
 			put("Action", "Deposit");
@@ -31,4 +41,14 @@ public class Account {
 		return transactionHistoryFieldVariable.getLog();
 	};
 	
+	// Overloading the withdraw method to use for testing
+	public ArrayList<HashMap<String, String>> withdraw(int amount, String date) {
+		HashMap<String, String> transaction = new HashMap<String, String>(){{
+			put("Action", "Withdraw");
+			put("Date", date);
+			put("Amount", Integer.toString(amount));
+		}};
+		transactionHistoryFieldVariable.addTransaction(transaction);
+		return transactionHistoryFieldVariable.getLog();
+	};
 }

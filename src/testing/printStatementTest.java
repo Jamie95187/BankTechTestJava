@@ -20,8 +20,10 @@ public class PrintStatementTest {
 	private final PrintStream originalOut = System.out;
 	private final TransactionHistory transactionHistory = new TransactionHistory();
 	private final Account account = new Account(transactionHistory);
+	private final String script = "Date || Credit || Debit || Balance";
 	
-	//Following the 'AAA' pattern Arrange, Action, Assert
+	// Following the 'AAA' pattern Arrange, Action, Assert
+	// JUnit test naming convention "MethodName_StateUnderTest_ExpectedBehavior"
 	
 	@Before
 	public void setUpStreams() {
@@ -40,14 +42,21 @@ public class PrintStatementTest {
 		 //Action
 		test.printStatement(transactionHistory);
 		 //Assert
-		assertEquals("Date || Credit || Debit || Balance", outContent.toString());
+		assertEquals(script, outContent.toString());
 	}
 	
 	@Test
 	public void printStatement_oneDeposit_correctStatement() {
 		account.deposit(1000, "01/01/2020");
 		test.printStatement(transactionHistory);
-		assertEquals("Date || Credit || Debit || Balance\n01/01/2020 || 1000.00 || || 1000.00", outContent.toString());
+		assertEquals(script + "\n01/01/2020 || 1000.00 || || 1000.00", outContent.toString());
+	}
+	
+	@Test
+	public void printStatement_oneDepositAndOneWithdraw_correctStatement() {
+		account.deposit(1000, "01/01/2020");
+		account.withdraw(500, "02/01/2020");
+		assertEquals(script + "\n01/01/2020 || 1000.00 || || 1000.00\n02/01/2020 || || 500.00 || 500.00", outContent.toString());
 	}
 
 }

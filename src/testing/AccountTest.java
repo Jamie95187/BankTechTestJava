@@ -47,21 +47,34 @@ public class AccountTest {
 	}
 	
 	@Test
-	public void account_deposit_oneDeposit() {
+	public void account_deposit_returnTransactionLog() {
 		assertEquals(1, mockedLog.size());
 		assertEquals(mockedLog, test.deposit(1000, "01/01/2020"));
 	};
 
 	@Test
-	public void account_deposit_twoDeposits() {
+	public void account_twoDeposits_returnTransactionLog() {
 		HashMap<String, String> mockedTransaction = new HashMap<String,String>(){{
 			put("Action", "Deposit");
-			put("Date", "01/02/2020");
+			put("Date", "02/01/2020");
 			put("Amount", "2000");
 		}};
 		mockedLog.add(mockedTransaction);
 		assertEquals(2, mockedLog.size());
 		test.deposit(1000, "01/01/2020");
-		assertEquals(mockedLog, test.deposit(1000, "01/02/2020"));
+		assertEquals(mockedLog, test.deposit(1000, "02/01/2020"));
+	}
+	
+	@Test
+	public void account_oneDepositOneWithdraw_returnTransactionLog() {
+		HashMap<String, String> mockedTransaction = new HashMap<String, String>(){{
+			put("Action", "Withdraw");
+			put("Date", "02/01/2020");
+			put("Amount", "500");
+		}};
+		mockedLog.add(mockedTransaction);
+		assertEquals(2, mockedLog.size());
+		test.withdraw(500, "02/01/2020");
+		assertEquals(mockedLog, test.withdraw(500, "02/01/2020"));
 	}
 }

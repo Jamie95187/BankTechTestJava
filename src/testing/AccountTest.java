@@ -30,7 +30,7 @@ public class AccountTest {
 	private TransactionHistory mockedTransactionHistory = mock(TransactionHistory.class);
 	
 	@Before
-	public void setUpStreams() {
+	public void setUpTests() {
 		test = new Account(mockedTransactionHistory);
 		// Add one deposit transaction to the mockedLog
 		mockedLog = new ArrayList<HashMap<String, String>>();
@@ -40,13 +40,30 @@ public class AccountTest {
 			put("Amount", "1000");
 		}};
 		mockedLog.add(mockedTransaction);
+		when(mockedTransactionHistory.getLog()).thenReturn(mockedLog);
 	};
+	
+	@After
+	public void clearMockedData() {
+		mockedLog.clear();
+	}
 	
 	@Test
 	public void account_deposit_oneDeposit() {
-		when(mockedTransactionHistory.getLog()).thenReturn(mockedLog);
 		assertEquals(1, mockedLog.size());
 		assertEquals(mockedLog, test.deposit(1000, "01/01/2020"));
 	};
 
+	@Test
+	public void account_deposit_twoDeposits() {
+		HashMap<String, String> mockedTransaction = new HashMap<String,String>(){{
+			put("Action", "Deposit");
+			put("Date", "01/02/2020");
+			put("Amount", "2000");
+		}};
+		mockedLog.add(mockedTransaction);
+		assertEquals(2, mockedLog.size());
+		test.deposit(1000, "01/01/2020");
+		assertEquals(mockedLog, test.deposit(1000, "01/02/2020"));
+	}
 }

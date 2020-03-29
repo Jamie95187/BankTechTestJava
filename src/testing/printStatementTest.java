@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import bankSystem.Account;
 import bankSystem.Statement;
 import bankSystem.TransactionHistory;
 
@@ -16,9 +18,10 @@ public class PrintStatementTest {
 	private static Statement test;
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final PrintStream originalOut = System.out;
-	TransactionHistory mockTransactionHistory = new TransactionHistory();
+	private final TransactionHistory transactionHistory = new TransactionHistory();
+	private final Account account = new Account(transactionHistory);
 	
-	  //Following the 'AAA' pattern Arrange, Action, Assert
+	//Following the 'AAA' pattern Arrange, Action, Assert
 	
 	@Before
 	public void setUpStreams() {
@@ -35,14 +38,15 @@ public class PrintStatementTest {
 	@Test
 	public void printStatement_blankStatement_defaultStatement() {
 		 //Action
-		test.printStatement(mockTransactionHistory);
+		test.printStatement(transactionHistory);
 		 //Assert
 		assertEquals("Date || Credit || Debit || Balance", outContent.toString());
 	}
 	
 	@Test
 	public void printStatement_oneDeposit_correctStatement() {
-		test.printStatement(mockTransactionHistory);
+		account.deposit(1000, "01/01/2020");
+		test.printStatement(transactionHistory);
 		assertEquals("Date || Credit || Debit || Balance\n01/01/2020 || 1000.00 || || 1000.00", outContent.toString());
 	}
 

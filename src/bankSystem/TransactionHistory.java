@@ -13,7 +13,6 @@ public class TransactionHistory {
 	
 	public ArrayList<HashMap<String, String>> addTransaction(HashMap<String, String> transaction) {
 		log.add(transaction);
-		System.out.println(log);
 		return (ArrayList<HashMap<String, String>>) log;
 	}
 	

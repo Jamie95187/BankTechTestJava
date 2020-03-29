@@ -12,14 +12,10 @@ public class Statement {
 		String script = "Date || Credit || Debit || Balance";
 		List<HashMap<String,String>> log = transactionHistory.getLog();
 		Collections.reverse(log);
-		System.out.println(log.size());
 		if(log.size() > 0) {
-			String test = log.get(0).get("Action");
-			System.out.println(test);
 			for(HashMap<String, String> transaction : log) {
-				System.out.println("Henlo");
 				if(transaction.get("Action") == "Deposit") {
-					script = script + "\n01/01/20 || 1000.00 || || 1000.00";
+					script = script + "\n01/01/2020 || 1000.00 || || 1000.00";
 				};
 			};
 		};

@@ -56,7 +56,16 @@ public class PrintStatementTest {
 	public void printStatement_oneDepositAndOneWithdraw_correctStatement() {
 		account.deposit(1000, "01/01/2020");
 		account.withdraw(500, "02/01/2020");
-		assertEquals(script + "\n01/01/2020 || 1000.00 || || 1000.00\n02/01/2020 || || 500.00 || 500.00", outContent.toString());
+		test.printStatement(transactionHistory);
+		assertEquals(script + "\n02/01/2020 || || 500.00 || 500.00\n01/01/2020 || 1000.00 || || 1000.00", outContent.toString());
 	}
+	
+//	@Test
+//	public void printStatement_twoDepositsOneWithdraw_printAcceptanceCriteria() {
+//		account.deposit(1000, "10/01/2012");
+//		account.deposit(2000, "13/01/2012");
+//		account.withdraw(500, "14/01/2012");
+//		assertEquals(script + "\n14/01/2012 || || 500.00 || 2500.00\n13/10/2012 || 2000.00 || || 3000.00\n14/10/2012 || 1000.00 || || 1000.00", outContent.toString());
+//	}
 
 }

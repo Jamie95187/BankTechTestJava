@@ -26,7 +26,7 @@ Used jUnit 4 for testing. To run all the tests locate the AllTests test suite in
 
 ## Approach
 
-I decided to have four classes for this project and followed the TDD pattern of **red, green, refactor**. I began by creating tests for the important features, which was displaying a statement in the command line.
+I decided to have four classes for this project and followed the TDD pattern of **red, green, refactor**. I began by creating tests for the important features, which were displaying a statement in the command line.
 
 ## Running the application
 
